@@ -32,6 +32,6 @@ model Meal {
 model ListSimple {
   id              Int      @id @default(autoincrement())
   name            String
-  listItemsSimple String
+  listItemsSimple String?
   createdAt       DateTime @default(now())
 }
