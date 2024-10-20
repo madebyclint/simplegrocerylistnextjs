@@ -1,24 +1,16 @@
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/react";
-import { PrismaClient } from '@prisma/client'
-import { main } from "framer-motion/client";
+import { submitList } from "../crud";
+import { redirect } from "next/navigation";
 
 export default function Page() {
   async function createList(formData: FormData) {
     "use server"
 
-    const prisma = new PrismaClient()
-    try {
-      const list = await prisma.listSimple.create({
-        data: {
-          name: formData.get("name") as string,
-          listItemsSimple: formData.get("listItemsSimple") as string,
-        },
-      });
-      console.log(list)
-    } catch (error) {
-      console.error("Failed to create list:", error);
-    }
+    await submitList(formData.get("name") as string, formData.get("listItemsSimple") as string)
+    console.log("List successfully created")
+    redirect("/list")
+
   }
 
   return <form action={createList} className="flex flex-col gap-4">
