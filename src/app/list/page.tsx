@@ -27,6 +27,8 @@ export default function Page() {
 
   return <>
     <h1 className="text-xl">Lists</h1>
+    <i className="fa-solid fa-magic-wand-sparkles"></i>
+    Hello
     <Skeleton isLoaded={isLoaded} className="rounded-lg">
       <Listbox>
         {lists.map((list, index) => (
