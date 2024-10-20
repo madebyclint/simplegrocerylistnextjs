@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function createList(name: string, listItemsSimple: string) {
-  const list = await prisma.listSimple.create({
+  await prisma.listSimple.create({
     data: { name, listItemsSimple },
   });
 }
